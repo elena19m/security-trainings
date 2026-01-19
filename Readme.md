@@ -18,13 +18,19 @@ Mainly, we are focusing out analysis on the following OS resources:
 
 ## CPU
 
-
-TODO
+```
+# htop
+# ps -ef
+# ll /proc/<pid>/
+```
 
 
 ## Connections
 
-TODO
+```
+sudo ss -utwpano
+sudo tcpdump -i <if> port <src> or port <dst> -s0 -A
+```
 
 ## Configuration files (Part 1)
 
@@ -32,7 +38,33 @@ TODO
 
 ## Memory inspection
 
-TODO
+```
+cat /proc/<pid>/maps
+00400000-00401000 r--p 00000000 00:01 1044                               /memfd: (deleted)
+00401000-00402000 r-xp 00001000 00:01 1044                               /memfd: (deleted)
+00402000-00403000 r--p 00002000 00:01 1044                               /memfd: (deleted)
+00403000-00404000 rw-p 00002000 00:01 1044                               /memfd: (deleted)
+7ffe22bdb000-7ffe22bfc000 rw-p 00000000 00:00 0                          [stack]
+7ffe22d7a000-7ffe22d7e000 r--p 00000000 00:00 0                          [vvar]
+7ffe22d7e000-7ffe22d80000 r-xp 00000000 00:00 0                          [vdso]
+ffffffffff600000-ffffffffff601000 --xp 00000000 00:00 0                  [vsyscall]
+
+sudo cat /proc/<pid>/map_files/401000-402000 > test
+
+file test
+test: ELF 64-bit LSB executable, x86-64, version 1 (SYSV), statically linked, not stripped
+
+objdump -d -M intel test
+../test:     file format elf64-x86-64
+
+
+Disassembly of section .text:
+
+0000000000401000 <main>:
+  401000:       55                      push   rbp
+  401001:       48 89 e5                mov    rbp,rsp
+
+```
 
 ## Services (web) - Data exfiltration
 
