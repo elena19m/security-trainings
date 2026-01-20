@@ -32,9 +32,21 @@ sudo ss -utwpano
 sudo tcpdump -i <if> port <src> or port <dst> -s0 -A
 ```
 
-## Configuration files (Part 1)
+## Auditd
 
-TODO
+```
+sudo apt update && sudo apt install auditd audispd-plugins
+ 
+sudo ausearch -i
+
+sudo aureport -x
+
+sudo auditctl -w /dev/shm -p rw -k dev_shm
+
+sudo ausearch -i -k dev_shm
+
+sudo auditctl -a exit,always -F arch=b64 -F euid=0 -S execve
+```
 
 ## Memory inspection
 
