@@ -80,11 +80,22 @@ Disassembly of section .text:
 
 ## Services (web) - Data exfiltration
 
-TODO
+```
+cat /var/log/apache2/access.log
+
+apt install libapache2_mod_security2
+
+cp /etc/modsecurity/modsecurity.conf-recommended /etc/modsecurity/modsecurity.conf
+
+systemctl restart apache2
+
+cat /var/log/apache/mod_security.log
+
+```
 
 ## Services (web) - Remote Code Execution
 
-TODO
+
 
 # File system inspection
 
