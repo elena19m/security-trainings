@@ -1,9 +1,8 @@
-# Security trainings
+# Incident Response Course - Intro into Incident Response
 
 This repository presents some examples of security incident response / investigation.
 
 The trainings from this repository are for beginners and focus on the perspective of Operating Systems concepts.
-
 
 When investigating a system, we are mainly looking at the system's anomalies.
 Mainly, we are focusing out analysis on the following OS resources:
@@ -15,6 +14,9 @@ Mainly, we are focusing out analysis on the following OS resources:
   - configuration files - bad configurations can lead to security issues.
   - services/applications - odd applications may be indicators of compromise
   - how tools are used - legitimate tools ca be used to launch attacks.
+
+![Testing Architecture](so-security.drawio.png)
+
 
 ## CPU
 
