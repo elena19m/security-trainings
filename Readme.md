@@ -48,6 +48,13 @@ sudo auditctl -w /dev/shm -p rw -k dev_shm
 sudo ausearch -i -k dev_shm
 
 sudo auditctl -a exit,always -F arch=b64 -F euid=0 -S execve
+
+sudo auditctl -a always,exit -S all -F path=/usr/bin/tar -F uid=1000
+
+sudo auditctl -a exit,always -F arch=b64 -F uid=student -S open,openat,creat -F dir=/dev/shm/
+
+sudo auditctl -d always,exit -S all -F path=/usr/bin/tar -F uid=1000
+
 ```
 
 ## Memory inspection
